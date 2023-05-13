@@ -1,0 +1,8 @@
+@!component('components/AdminNavbar')
+<div class="flex overflow-hidden bg-white pt-16">
+    @!component('components/AdminSidebar')
+   <div class="hidden fixed inset-0 z-10 bg-gray-900 opacity-50" id="sidebarBackdrop"></div>
+    @component('components/AdminContent')
+      {{{ await $slots.main() }}}
+    @end
+</div>

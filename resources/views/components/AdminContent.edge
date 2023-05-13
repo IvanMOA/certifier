@@ -1,0 +1,14 @@
+<div id="main-content" class="h-full w-full min-h-screen bg-gray-50 relative overflow-y-auto lg:ml-64">
+      <main>
+         <div class="px-4 pt-6">
+            <div class="grid grid-cols-1 gap-6 mb-6 w-full xl:grid-cols-2 2xl:grid-cols-3">
+               <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4  bg-gradient-to-r from-dark-800 to-dark-900 2xl:col-span-2" style="position: relative;">
+                  {{{ await $slots.main() }}}
+               </div>
+            </div>
+         </div>
+      </main>
+      <p class="my-10 text-sm text-center text-gray-500">
+         © 2023 Proyecto Integrador
+      </p>
+</div>
