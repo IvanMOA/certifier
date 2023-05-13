@@ -8,8 +8,8 @@ export default class extends BaseSchema {
       table.increments('id')
       table.integer('user_id').references('id').inTable('users').onDelete('CASCADE')
       table.integer('course_id').references('id').inTable('users').onDelete('CASCADE')
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
+      table.timestamp('created_at', { useTz: true }).defaultTo(this.now(6))
+      table.timestamp('updated_at', { useTz: true }).defaultTo(this.now(6))
     })
   }
 
