@@ -11,6 +11,6 @@ services:
       POSTGRES_USER: "${PG_USER}"
       POSTGRES_PASSWORD: "${PG_PASSWORD}"
     volumes:
-      - postgres-data-10:/var/lib/postgresql/data
+      - postgres-data-11:/var/lib/postgresql/data
 volumes:
-  postgres-data-10:
+  postgres-data-11:
