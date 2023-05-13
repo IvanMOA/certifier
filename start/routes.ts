@@ -20,6 +20,8 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
-})
+Route.get('/admin/users', 'AdminUsersController.index').middleware('auth')
+
+Route.get('/admin/login', 'AdminAuthController.index')
+Route.post('/admin/login', 'AdminAuthController.login')
+Route.post('/admin/logout', 'AdminAuthController.logout')
