@@ -28,9 +28,11 @@ Route.delete('/users/:id', 'AdminUsersController.destroy')
 
 Route.get('/admin/courses', 'AdminCoursesController.index').middleware('auth')
 Route.get('/admin/courses/create', 'AdminCoursesController.create')
+Route.get('/admin/courses/:courseId/certified-users', 'AdminCertifiedUsersController.index')
 
 Route.post('/courses', 'AdminCoursesController.store')
 Route.delete('/courses/:id', 'AdminCoursesController.destroy')
+Route.delete('/courses/:courseId/certified-users/:userId', 'AdminCertifiedUsersController.destroy')
 
 Route.get('/admin/login', 'AdminAuthController.index')
 Route.post('/admin/login', 'AdminAuthController.login')

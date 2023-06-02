@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, ManyToMany, manyToMany, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import User from 'App/Models/User'
+import Certificate from 'App/Models/Certificate'
 
 export default class Course extends BaseModel {
   @column({ isPrimary: true })
@@ -8,6 +10,10 @@ export default class Course extends BaseModel {
   public name: string
   @column()
   public duration: number
+  @manyToMany(() => User, {
+    pivotTable: 'certificates',
+  })
+  public certifiedUsers: ManyToMany<typeof User>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

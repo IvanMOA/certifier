@@ -1,0 +1,27 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+@section('body')
+  @component('components/AdminLayout')
+    <div class="flex justify-between">
+      <div>
+        <h1 class="font-bold text-xl text-slate-700">Usuarios certificados en el curso "{{ course.name }}"</h1>
+        <h1 class="text-lg text-slate-500 mb-8 ">Aquí puedes asignar los usuarios que pueden descargar su certificado para este curso</h1>
+      </div>
+    </div>
+    @component('components/table', {
+         columns:
+         [
+           { name: 'Nombre de usuario', accessor: 'name' },
+           { name: 'Correo de usuario', accessor: 'email' },
+           { name: 'Acciones', slotName: 'actions', class: 'flex justify-center' },
+         ],
+         rows: users,
+         pagination: users
+         })
+          @slot('actions', scope)
+            <form action="/courses/{{course.id}}/certified-users/{{scope.id}}?_method=DELETE" method="POST" class="mx-auto"><button type="submit"><i class="fa-solid fa-square-minus"></i></button></a>
+          @end
+     @end
+  @end
+@end

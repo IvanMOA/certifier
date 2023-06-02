@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
+import { column, beforeSave, BaseModel, ManyToMany, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import { Role } from 'App/Models/Role'
 import Certificate from 'App/Models/Certificate'
 import { manyToMany } from '@adonisjs/lucid/build/src/Orm/Decorators'
@@ -33,11 +33,8 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
-  @manyToMany(() => Certificate, {
-    pivotTable: 'certificates',
-    pivotRelatedForeignKey: 'course_id',
-  })
-  public certificates: ManyToMany<typeof Certificate>
+  @hasMany(() => Certificate, {})
+  public certificates: HasMany<typeof Certificate>
 
   @beforeSave()
   public static async hashPassword(user: User) {
