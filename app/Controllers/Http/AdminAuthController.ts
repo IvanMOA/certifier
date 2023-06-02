@@ -15,7 +15,8 @@ export default class AdminAuthController {
     try {
       await auth.use('web').attempt(email, password)
       response.redirect('/admin/users')
-    } catch {
+    } catch (e) {
+      console.log(e)
       session.flash('error', 'Invalid credentials')
       return response.redirect('/admin/login')
     }

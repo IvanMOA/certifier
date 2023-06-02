@@ -33,4 +33,10 @@ export default class AdminUsersController {
     })
     return response.redirect('/admin/users')
   }
+
+  public async destroy({ request, response }: HttpContextContract) {
+    const user = await User.findOrFail(request.param('id'))
+    await user.delete()
+    return response.redirect('/admin/users')
+  }
 }

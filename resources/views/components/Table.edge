@@ -10,6 +10,11 @@
                         {{ column.name }}
                      </th>
                      @end
+                     @if(actions?.delete)
+                     <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                      Acciones
+                     </th>
+                     @end
                   </tr>
                </thead>
                <tbody>
@@ -21,6 +26,13 @@
                         {{ i18n.formatDate(row[column.accessor], column.dateFormatOptions) }}
                         @else
                         {{ row[column.accessor] }}
+                        @end
+                     </td>
+                     @end
+                     @if(actions?.delete)
+                     <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        @if(actions?.delete)
+                          <form action="/users/{{row.id}}?_method=DELETE" method="POST"><button type="submit">Borrar</button></form>
                         @end
                      </td>
                      @end

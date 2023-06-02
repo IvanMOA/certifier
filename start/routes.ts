@@ -22,7 +22,9 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/admin/users', 'AdminUsersController.index').middleware('auth')
 Route.get('/admin/users/create', 'AdminUsersController.create')
+
 Route.post('/users', 'AdminUsersController.store')
+Route.delete('/users/:id', 'AdminUsersController.destroy')
 
 Route.get('/admin/login', 'AdminAuthController.index')
 Route.post('/admin/login', 'AdminAuthController.login')
