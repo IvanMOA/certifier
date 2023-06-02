@@ -33,6 +33,7 @@ Route.get('/admin/courses/:courseId/certified-users', 'AdminCertifiedUsersContro
 Route.post('/courses', 'AdminCoursesController.store')
 Route.delete('/courses/:id', 'AdminCoursesController.destroy')
 Route.delete('/courses/:courseId/certified-users/:userId', 'AdminCertifiedUsersController.destroy')
+Route.post('/courses/:courseId/certified-users', 'AdminCertifiedUsersController.store')
 
 Route.get('/admin/login', 'AdminAuthController.index')
 Route.post('/admin/login', 'AdminAuthController.login')

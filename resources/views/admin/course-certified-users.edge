@@ -9,6 +9,16 @@
         <h1 class="text-lg text-slate-500 mb-8 ">Aquí puedes asignar los usuarios que pueden descargar su certificado para este curso</h1>
       </div>
     </div>
+    <div class="h-[1px] bg-gray-300 w-full mb-6"></div>
+    <form action="/courses/{{course.id}}/certified-users" method="POST">
+      <p class="text-gray-500 font-bold mb-4">Agrega un usuario al listado de usuarios certificados en este curso</p>
+      @!component('components/Input', { 'label': 'Correo', 'type': 'text', name: 'email' })
+      <div class="py-2"></div>
+      @component('components/Button', { type: 'submit' })
+        Certificar
+      @end
+    </form>
+    <div class="h-[1px] bg-gray-300 w-full mb-6 mt-6"></div>
     @component('components/table', {
          columns:
          [

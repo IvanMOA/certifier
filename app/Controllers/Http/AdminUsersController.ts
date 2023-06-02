@@ -1,6 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
-import { schema } from '@ioc:Adonis/Core/Validator'
+import { rules, schema } from '@ioc:Adonis/Core/Validator'
 import User from 'App/Models/User'
 
 export default class AdminUsersController {
@@ -23,7 +23,7 @@ export default class AdminUsersController {
         lastName: schema.string(),
         age: schema.number(),
         company: schema.string(),
-        email: schema.string(),
+        email: schema.string([rules.email(), rules.unique({ table: 'users', column: 'email' })]),
         password: schema.string(),
       }),
     })
