@@ -16,11 +16,12 @@
         </a>
       </div>
     </div>
-    @!component('components/table', {
+    @component('components/table', {
          columns:
          [
            { name: 'Nombre', accessor: 'name' },
            { name: 'Duración (horas)', accessor: 'duration' },
+           { name: 'Usuarios certificados', slotName: 'certifiedUsers', class: 'flex justify-center' }
          ],
          actions: {
            delete: true
@@ -28,5 +29,9 @@
          rows: courses,
          pagination: courses
          })
+          @slot('certifiedUsers', scope)
+            <a href="/admin/courses/{{scope.id}}/certified-users" class="mx-auto"><i class="fa-solid fa-medal"></i></a>
+          @end
+     @end
   @end
 @end

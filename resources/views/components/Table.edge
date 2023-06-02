@@ -24,8 +24,10 @@
                      <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white {{column.class}}">
                         @if(column.dateFormatOptions)
                         {{ i18n.formatDate(row[column.accessor], column.dateFormatOptions) }}
-                        @else
+                        @elseif(column.accessor)
                         {{ row[column.accessor] }}
+                        @elseif(column.slotName)
+                        {{{ await $slots[column.slotName](row) }}}
                         @end
                      </td>
                      @end
