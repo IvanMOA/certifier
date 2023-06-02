@@ -4,7 +4,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class AdminAuthController {
   public async index({ view, auth }: HttpContextContract) {
-    const isLoggedIn = await await auth.check()
+    const isLoggedIn = await auth.check()
     if (isLoggedIn) return view.render('admin/users')
     else return view.render('admin/login')
   }
@@ -20,6 +20,7 @@ export default class AdminAuthController {
       return response.redirect('/admin/login')
     }
   }
+
   public async logout({ auth, response }: HttpContextContract) {
     await auth.logout()
     response.redirect('/admin/login')

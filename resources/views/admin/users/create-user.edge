@@ -1,0 +1,21 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+@section('body')
+  @component('components/AdminLayout')
+    <h1 class="mb-4 font-bold">Crear usuario</h1>
+    <form action="/users" method="POST" class="flex flex-col space-y-4">
+       @!component('components/Input', { 'label': 'Nombres', 'type': 'text', name: 'name' })
+       @!component('components/Input', { 'label': 'Apellidos', 'type': 'text', name: 'lastName' })
+       @!component('components/Input', { 'label': 'Edad', 'type': 'number', name: 'age' })
+       @!component('components/Input', { 'label': 'Empresa', 'type': 'text', name: 'company' })
+       @!component('components/Input', { 'label': 'Correo', 'type': 'email', name: 'email' })
+       @!component('components/Input', { 'label': 'Contraseña', 'type': 'password', name: 'password' })
+       @component('components/Button', {
+                            type: 'submit'
+                          })
+                            Iniciar sesión
+                          @end
+    </form>
+  @end
+@end

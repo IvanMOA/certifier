@@ -1,0 +1,3 @@
+<a href="{{ disabled ? '#' : `/admin/events?page=${page}`}}" class="{{ disabled && 'pointer-events-none cursor-not-allowed opacity-50' }} {{ page === pagination.currentPage ? 'border-slate--300 border-2' : 'border-gray-300 border' }} bg-white text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 text-sm font-medium" {{ $props.serialize() }}>
+   {{{ await $slots.main() }}}
+</a>
