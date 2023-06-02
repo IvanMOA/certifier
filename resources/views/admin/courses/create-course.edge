@@ -1,0 +1,17 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+@section('body')
+  @component('components/AdminLayout')
+    <h1 class="mb-4 font-bold">Crear curso</h1>
+    <form action="/courses" method="POST" class="flex flex-col space-y-4">
+       @!component('components/Input', { 'label': 'Nombre', 'type': 'text', name: 'name' })
+       @!component('components/Input', { 'label': 'Duración', 'type': 'number', name: 'duration' })
+       @component('components/Button', {
+                            type: 'submit'
+                          })
+                            Guardar
+                          @end
+    </form>
+  @end
+@end

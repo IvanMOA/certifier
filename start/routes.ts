@@ -26,6 +26,12 @@ Route.get('/admin/users/create', 'AdminUsersController.create')
 Route.post('/users', 'AdminUsersController.store')
 Route.delete('/users/:id', 'AdminUsersController.destroy')
 
+Route.get('/admin/courses', 'AdminCoursesController.index').middleware('auth')
+Route.get('/admin/courses/create', 'AdminCoursesController.create')
+
+Route.post('/courses', 'AdminCoursesController.store')
+Route.delete('/courses/:id', 'AdminCoursesController.destroy')
+
 Route.get('/admin/login', 'AdminAuthController.index')
 Route.post('/admin/login', 'AdminAuthController.login')
 Route.post('/admin/logout', 'AdminAuthController.logout')

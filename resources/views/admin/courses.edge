@@ -1,0 +1,32 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+@section('body')
+  @component('components/AdminLayout')
+    <div class="flex justify-between">
+      <div>
+        <h1 class="font-bold text-xl text-slate-700">Cursos</h1>
+        <h1 class="text-lg text-slate-500 mb-8 ">Cursos disponibles</h1>
+      </div>
+      <div>
+        <a href="/admin/courses/create">
+           @component('components/Button')
+                  Agregar
+           @end
+        </a>
+      </div>
+    </div>
+    @!component('components/table', {
+         columns:
+         [
+           { name: 'Nombre', accessor: 'name' },
+           { name: 'Duración (horas)', accessor: 'duration' },
+         ],
+         actions: {
+           delete: true
+         },
+         rows: courses,
+         pagination: courses
+         })
+  @end
+@end
