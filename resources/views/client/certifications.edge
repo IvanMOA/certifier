@@ -1,0 +1,29 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+@section('body')
+ <div class="bg-gray-50 min-h-screen">
+    <div class="bg-gray-50 max-w-7xl mx-auto pt-20">
+      <h1 class="font-bold text-gray-700 text-3xl">Bienvenido, estas son tus certificaciones disponibles para descargar:</h1>
+      <p class="py-4">ó puedes </p>
+             <form action="/logout" method="POST" class="flex items-center">
+                <button type="submit" class="text-slate-70 font-medium rounded-lg text-sm">
+                   Cerrar sesión
+                </button>
+             </form>
+      <div class="grid mt-4 md:grid-cols-4 gap-4">
+        @each(certificate in certificates)
+        <div class="bg-white shadow-lg rounded-md p-4 flex justify-between">
+          <div>
+            <h1 class="text-gray-800 font-bold text-xl">{{ certificate.course.name }}</h1>
+            <h1 class="text-gray-500 text-sm">{{ certificate.course.duration }} horas</h1>
+          </div>
+          <a href="/certificates/{{ certificate.course.id }}"  class="my-auto mr-4">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+        @end
+      </div>
+    </div>
+ </div>
+@end

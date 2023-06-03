@@ -21,16 +21,17 @@
          [
            { name: 'Nombre', accessor: 'name' },
            { name: 'Duración (horas)', accessor: 'duration' },
-           { name: 'Usuarios certificados', slotName: 'certifiedUsers', class: 'flex justify-center' }
+           { name: 'Usuarios certificados', slotName: 'certifiedUsers'},
+           { name: 'Acciones', slotName: 'actions'}
          ],
-         actions: {
-           delete: true
-         },
          rows: courses,
          pagination: courses
          })
           @slot('certifiedUsers', scope)
             <a href="/admin/courses/{{scope.id}}/certified-users" class="mx-auto"><i class="fa-solid fa-medal"></i></a>
+          @end
+          @slot('actions', scope)
+            <form action="/courses/{{scope.id}}?_method=DELETE" method="POST"><button type="submit">Borrar</button></form>
           @end
      @end
   @end

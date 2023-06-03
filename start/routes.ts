@@ -20,15 +20,24 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/admin/users', 'AdminUsersController.index').middleware('auth')
-Route.get('/admin/users/create', 'AdminUsersController.create')
+Route.get('/admin/users', 'AdminUsersController.index').middleware(['auth', 'redirectByRole'])
+Route.get('/admin/users/create', 'AdminUsersController.create').middleware([
+  'auth',
+  'redirectByRole',
+])
 
 Route.post('/users', 'AdminUsersController.store')
 Route.delete('/users/:id', 'AdminUsersController.destroy')
 
-Route.get('/admin/courses', 'AdminCoursesController.index').middleware('auth')
-Route.get('/admin/courses/create', 'AdminCoursesController.create')
-Route.get('/admin/courses/:courseId/certified-users', 'AdminCertifiedUsersController.index')
+Route.get('/admin/courses', 'AdminCoursesController.index').middleware(['auth', 'redirectByRole'])
+Route.get('/admin/courses/create', 'AdminCoursesController.create').middleware([
+  'auth',
+  'redirectByRole',
+])
+Route.get(
+  '/admin/courses/:courseId/certified-users',
+  'AdminCertifiedUsersController.index'
+).middleware(['auth', 'redirectByRole'])
 
 Route.post('/courses', 'AdminCoursesController.store')
 Route.delete('/courses/:id', 'AdminCoursesController.destroy')
@@ -38,3 +47,13 @@ Route.post('/courses/:courseId/certified-users', 'AdminCertifiedUsersController.
 Route.get('/admin/login', 'AdminAuthController.index')
 Route.post('/admin/login', 'AdminAuthController.login')
 Route.post('/admin/logout', 'AdminAuthController.logout')
+
+Route.get('/', 'CertificationsController.index').middleware(['auth', 'redirectByRole'])
+Route.get('/certificates/:courseId', 'CertificationsController.show').middleware([
+  'auth',
+  'redirectByRole',
+])
+
+Route.get('/login', 'AuthController.index')
+Route.post('/login', 'AuthController.login')
+Route.post('/logout', 'AuthController.logout')

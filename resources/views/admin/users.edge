@@ -16,18 +16,20 @@
         </a>
       </div>
     </div>
-    @!component('components/table', {
+    @component('components/table', {
          columns:
          [
            { name: 'Nombre', accessor: 'name' },
            { name: 'Apellidos', accessor: 'last_name' },
            { name: 'Correo', accessor: 'email' },
+           { name: 'Acciones', slotName: 'actions'}
          ],
-         actions: {
-           delete: true
-         },
          rows: users,
          pagination: users
          })
+          @slot('actions', scope)
+            <form action="/users/{{scope.id}}?_method=DELETE" method="POST"><button type="submit">Borrar</button></form>
+          @end
+    @end
   @end
 @end

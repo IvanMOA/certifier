@@ -31,13 +31,6 @@
                         @end
                      </td>
                      @end
-                     @if(actions?.delete)
-                     <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                        @if(actions?.delete)
-                          <form action="/users/{{row.id}}?_method=DELETE" method="POST"><button type="submit">Borrar</button></form>
-                        @end
-                     </td>
-                     @end
                   </tr>
                   @end
                </tbody>

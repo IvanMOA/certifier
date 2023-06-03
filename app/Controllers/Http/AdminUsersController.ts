@@ -8,7 +8,7 @@ export default class AdminUsersController {
     const pageFromQs = request.qs()?.page
     const page = pageFromQs ? parseInt(pageFromQs, 10) : 1
     return view.render('admin/users', {
-      users: await Database.from('users').paginate(page, 10),
+      users: await Database.from('users').where('role', 'user').paginate(page, 10),
     })
   }
 

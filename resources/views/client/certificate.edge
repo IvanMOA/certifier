@@ -1,0 +1,33 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+@section('body')
+ <div class="bg-gray-50 min-h-screen py-24">
+    <div class="w-2/3 mx-auto flex justify-center">
+      <button class="download-button mb-4 text-gray-500 border border-gray-800 px-4 py-2 rounded-md"><span class="text-lg mr-2 font-bold">Descargar</span> <i class="fa-solid text-gray-600 fa-cloud-arrow-down"></i></button>
+    </div>
+    <div id="certificate" class="bg-white flex items-center justify-around rounded-md shadow-md p-4 mx-auto aspect-[16/9] w-2/3">
+      <div class="w-1/2 grid place-items-center">
+        <img class="w-2/3 object-fit" src="/assets/images/certificate.png" />
+      </div>
+      <div class="w-1/2 flex flex-col">
+        <p class="font-bold text-gray-800 text-2xl mb-4">Felicidades !</p>
+        <p class="font-bold text-gray-500 text-xl">Ahora estás certificado en "{{ certificate.course.name }}"</p>
+        <p class="text-gray-500 text-lg font-bold">Duración del curso: {{ certificate.course.duration }} horas</p>
+        <p class="font-bold text-gray-500 text-xl mt-12">Certificado para: {{ user.name }} {{ user.lastName }}</p>
+      </div>
+    </div>
+ </div>
+     <script>
+       const button = document.querySelector(".download-button");
+
+       function generatePDF() {
+         const element = document.getElementById("certificate");
+         html2pdf()
+         .set({ jsPDF: {  format: [1920 /3, 1080 /3], orientation: 'landscape' } })
+         .from(element).save();
+       }
+
+       button.addEventListener("click", generatePDF);
+     </script>
+@end
